@@ -1,8 +1,10 @@
 # Disable directory browsing 
-Options -Indexes
+# Options +FollowSymLinks
+
+RewriteBase /
 
 # turn on the re-write engine - mod_rewrite
-RewriteEngine on
+RewriteEngine On
 
 # if trying to access dot files
 RewriteCond %{REQUEST_URI} ^\.(.*)$ [OR]

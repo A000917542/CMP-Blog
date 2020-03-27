@@ -56,11 +56,11 @@
         function start () {
             $route = explode('/', URI);
 
-            $route[2] = strtolower($route[2]);
+            $route[1] = strtolower($route[1]);
 
-            if (file_exists(ROOT . "/private/app/controllers/" . $route[2] . ".php")) {
-                $this->require("/private/app/controllers/" . $route[2] . ".php");
-                $controller = new $route[2]();
+            if (file_exists(ROOT . "/private/app/controllers/" . $route[1] . ".php")) {
+                $this->require("/private/app/controllers/" . $route[1] . ".php");
+                $controller = new $route[1]();
             } else {
                 $this->require("/private/app/controllers/main.php");
                 $main = new Main();
