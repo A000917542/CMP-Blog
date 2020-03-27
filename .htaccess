@@ -1,5 +1,5 @@
 # Disable directory browsing 
-# Options +FollowSymLinks
+Options +FollowSymLinks
 
 RewriteBase /
 
