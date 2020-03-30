@@ -21,21 +21,19 @@
                         $dsn = $this->config["database"]["driver"] . ":" .
                         "host=" . $this->config["database"]["dbhost"] .
                         ";dbname=" . $this->config["database"]["dbname"];
-echo($dsn);
-                    $this->db = new PDO($dsn
+                    $this->db = new PDO(
+                        $dsn
                         , $this->config["database"]["username"]
-                        , $this->config["database"]["passord"]
+                        , $this->config["database"]["password"]
                     );
 
-                        echo($this->config["database"]["username"]);
-
-                        $sql = file_get_contents("data/init.sql");
+                        $sql = file_get_contents("setup/data/init.sql");
                         
                         echo($sql);
                         
                         $this->db->exec($sql);
                         
-                        echo "Database setup successfully.";
+                        echo "Database setup successfully.\n";
                 } catch(PDOException $ex) {
                     echo($ex->getMessage());
                 }
