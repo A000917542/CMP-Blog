@@ -10,6 +10,7 @@ class Test extends Controller {
         $this->view("template/header");
         // print_r($_SESSION);
         $is_auth = isset($_SESSION["username"]);
+        
         if ($is_auth) {
             $this->view("test/auth");
         } else {
@@ -17,6 +18,10 @@ class Test extends Controller {
         }
         // $this->view("test/test");
         $this->view("template/footer");
+    }
+
+    function parameterTest($param) {
+        echo($param);
     }
 
     function Login() {
@@ -32,7 +37,13 @@ class Test extends Controller {
 
                 $auth = $this->UserModel->authenticateUser($cl_name, $cl_pass);
                 if ($auth) {
-                    header("location: /test/");
+                    $page = $this->buildRelativeUrl($_SERVER['HTTP_REFERER'], 3);
+                    
+                    if ($this->currentUrl == $page) {
+                        $page = "/";
+                    }
+
+                    header("location: " . $page);
                 } else {
                     echo("Not Authenticated");
                 }
@@ -46,15 +57,20 @@ class Test extends Controller {
             setcookie("csrf", $csrf);
             $this->view("test/login", array("csrf" => $csrf));
         }
-
-        
     }
 
     function Logout() {
         session_unset();
         session_destroy();
         $_SESSION = Array();
-        header("location: /test/");
+
+        $page = $this->buildRelativeUrl($_SERVER['HTTP_REFERER'], 3);
+                    
+        if ($this->currentUrl == $page) {
+            $page = "/";
+        }
+
+        header("location: " . $page);
     }
 
 }

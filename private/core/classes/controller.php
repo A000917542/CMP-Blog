@@ -4,6 +4,8 @@ abstract class Controller {
 
     private $route = [];
 
+    protected $currentUrl = "/";
+
     private $args = 0;
 
     private $params = [];
@@ -12,10 +14,36 @@ abstract class Controller {
 
         $this->route = explode('/', URI);
 
+        $this->currentUrl = $this->buildRelativeUrl($this->route, 1);
+
         $this->args = count($this->route);
 
         $this->router();
 
+    }
+
+    protected function buildRelativeUrl( $urlArray, $start_index ) {
+        
+        $full_url = $this->route;
+        
+        if (is_array($full_url)) {
+            $url_pieces = $full_url;
+        } else {
+            $url_pieces = explode("/", $full_url);
+        }
+        
+        $count = count($url_pieces);
+
+        $pieces = array();
+        
+        for ($i = $start_index; $i < $count; $i++) {
+            $pieces[$i-$start_index] = $url_pieces[$i];
+        }
+
+        $ret = str_replace("//", "/", join("/", $pieces) . "/");
+
+        return $ret;
+    
     }
 
     private function router () {
