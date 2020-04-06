@@ -10,28 +10,18 @@ class Main extends Controller {
      * http://localhost/
      */
     function Index () {
-        $pass = password_hash("123456", PASSWORD_DEFAULT);
-        echo($pass);
         $this->view("template/header");
         $this->view("main/index");
-        echo($_SESSION['test']);
         $this->view("template/footer");
         
     }
 
     function Other () {
-
         $this->view("template/header");
         $this->view("main/other");
         echo("<br><br><br>hello there");
         $this->view("template/footer");
-        
     }
-
-    function Info() {
-        phpinfo();
-    }
-
 }
 
 ?>
