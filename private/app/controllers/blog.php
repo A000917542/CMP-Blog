@@ -17,8 +17,6 @@ class Blog extends Controller {
     }
 
     function Read($blogId) {
-        echo("This is the blog you picked! " . $blogId);
-
         // create blogModel
         // lookup blog id
         // get blog details

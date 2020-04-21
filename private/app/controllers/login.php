@@ -1,6 +1,6 @@
 <?php
 
-class Test extends Controller {
+class Login extends Controller {
 
     function __construct() {
         parent::__construct();
