@@ -23,7 +23,7 @@ class Blog extends Controller {
         // get blog details
         $post = $this->BlogModel->readPost($blogId);
         // fill in template with record
-        $this->view("template/header");
+        $this->view("blog/header", $post);
         $this->view("blog/index", $post);
         $this->view("template/footer");
     }

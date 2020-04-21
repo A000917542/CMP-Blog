@@ -18,9 +18,10 @@ CREATE TABLE posts (
     , content TEXT
     , author VARCHAR(128)
     , post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    FOREIGN KEY author
-        REFERENCES authors(email)
-)
+    , INDEX (author)
+    , FOREIGN KEY (author)
+        REFERENCES authors (email)
+);
 
 INSERT INTO `posts` (slug, title, content, author)
-VALUES ("post-a", "Post A", "<article><h2>Post A</h2><section><p>This is a basic test article for the blog post.</p></section></article>", "brent.ritchie@cambriancollege.ca")
+VALUES ("post-a", "Post A", "<article><h2>Post A</h2><section><p>This is a basic test article for the blog post.</p></section></article>", "brent.ritchie@cambriancollege.ca");

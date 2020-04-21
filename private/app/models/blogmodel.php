@@ -7,10 +7,10 @@ class BlogModel extends Model {
     }
 
     function readPost($blogId) {
-        $sql = "SELECT `title`, `content`, `author` FROM `posts` WHERE `title` = 'post-a'";
+        $sql = "SELECT `title`, `content`, `author` FROM `posts` WHERE `slug` = ?";
         $stmt = $this->db->prepare($sql);
-        $stmt->execute(Array($blogId));
-        $post = $stmt->fetch(PDO::FETCH_ASSOC);
+        $cnt = $stmt->execute(Array($blogId));
+        $post = $stmt->fetch();
         return $post;
     }
 
