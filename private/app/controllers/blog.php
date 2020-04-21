@@ -18,9 +18,14 @@ class Blog extends Controller {
 
     function Read($blogId) {
         // create blogModel
+        $this->model("BlogModel");
         // lookup blog id
         // get blog details
+        $post = $this->BlogModel->readPost($blogId);
         // fill in template with record
+        $this->view("template/header");
+        $this->view("blog/index", $post);
+        $this->view("template/footer");
     }
 
     function Create() {

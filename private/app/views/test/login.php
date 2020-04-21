@@ -3,7 +3,7 @@ form > * {
     display: block;
 }
 </style>
-<form method="POST" action="/test/login">
+<form method="POST" action="/login/login">
     <input type="hidden" name="csrf" value="<?php echo($csrf) ?>">
     <label for="username">Email</label>
     <input id="username" name="username" required autocomplete="email">
