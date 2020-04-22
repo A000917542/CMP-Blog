@@ -16,7 +16,7 @@ CREATE TABLE posts (
     slug VARCHAR(128) NOT NULL PRIMARY KEY
     , title VARCHAR(255) NOT NULL
     , content TEXT
-    , author VARCHAR(128)
+    , author VARCHAR(128) NOT NULL
     , post_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     , INDEX (author)
     , FOREIGN KEY (author)
